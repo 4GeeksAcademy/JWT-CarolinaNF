@@ -39,19 +39,27 @@ export const Private = () => {
 				});
 			})
 			.catch((error) => console.log(error));
-	}, []);
+	}, [backendUrl, dispatch, navigate]);
 
 	return (
 		<div className="container mt-5">
-			<h1>Private Page</h1>
-			<p>Solo usuarios autenticados pueden ver esto.</p>
+			<div className="row justify-content-center">
+				<div className="col-md-8">
+					<h1 className="mb-4">Private Page</h1>
+					<p>Solo usuarios autenticados pueden ver esta página.</p>
 
-			{store.privateData && (
-				<div className="alert alert-success">
-					<p><strong>Mensaje:</strong> {store.privateData.message}</p>
-					<p><strong>Email:</strong> {store.privateData.user.email}</p>
+					{store.privateData && (
+						<div className="alert alert-success mt-4">
+							<p className="mb-2">
+								<strong>Mensaje:</strong> {store.privateData.message}
+							</p>
+							<p className="mb-0">
+								<strong>Email:</strong> {store.privateData.user.email}
+							</p>
+						</div>
+					)}
 				</div>
-			)}
+			</div>
 		</div>
 	);
 };

@@ -12,7 +12,8 @@ import { Private } from "./pages/Private";
 export const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<Layout />}>
-			<Route path="/signup" element={<Signup />} />
+			<Route index element={<Login />} />
+			<Route path="/Signup" element={<Signup />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/private" element={<Private />} />
 		</Route>

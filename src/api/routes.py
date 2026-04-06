@@ -1,6 +1,3 @@
-"""
-This module takes care of starting the API Server, Loading the DB and Adding the endpoints
-"""
 from flask import request, jsonify, Blueprint
 from api.models import db, User
 from api.utils import APIException
@@ -8,7 +5,6 @@ from flask_cors import CORS
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 api = Blueprint("api", __name__)
-CORS(api)
 
 @api.route("/hello", methods=["GET"])
 def handle_hello():
@@ -80,7 +76,7 @@ def login():
 @jwt_required()
 def private():
     current_user_id = get_jwt_identity()
-    user = User.query.get(current_user_id)
+    user = User.query.get(int(current_user_id))
 
     if user is None:
         raise APIException("Usuario no encontrado", status_code=404)
